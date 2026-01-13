@@ -126,25 +126,25 @@ function Header() {
     <motion.header
       initial={{ y: -100, x: '-50%' }}
       animate={{ y: 0, x: '-50%' }}
-      className={`fixed top-4 left-1/2 z-50 px-6 py-3 rounded-full transition-shadow duration-300 w-[calc(100%-2rem)] max-w-max flex items-center justify-between gap-4 ${isScrolled
+      className={`fixed top-4 left-1/2 z-50 px-6 py-2.5 rounded-full transition-shadow duration-300 w-fit max-w-[calc(100%-2rem)] flex items-center gap-4 ${isScrolled
         ? 'bg-white/90 backdrop-blur-md shadow-lg'
         : 'bg-white/80 backdrop-blur-sm shadow-md'
         }`}
     >
-      <nav className="flex items-center gap-3 md:gap-6">
-        <a href="#home" className="text-xl font-bold text-blue-600">
+      <nav className="flex items-center gap-4 md:gap-6">
+        <a href="#home" className="text-xl font-bold text-blue-600 flex-shrink-0">
           MODERNBIZ
         </a>
 
         {/* Desktop Navigation */}
-        <ul className="hidden md:flex items-center gap-6">
+        <ul className="hidden md:flex items-center gap-4">
           {navLinks.map(link => (
-            <li key={link.id}>
+            <li key={link.id} className="flex-shrink-0 whitespace-nowrap">
               <a
                 href={`#${link.id}`}
-                className={`relative px-3 py-1.5 text-sm font-medium transition-colors whitespace-nowrap ${activeSection === link.id
-                    ? 'text-blue-600'
-                    : 'text-gray-600 hover:text-gray-900'
+                className={`relative px-2 py-1.5 text-sm font-medium transition-colors whitespace-nowrap ${activeSection === link.id
+                  ? 'text-blue-600'
+                  : 'text-gray-600 hover:text-gray-900'
                   }`}
               >
                 {link.label}
@@ -159,7 +159,7 @@ function Header() {
           ))}
         </ul>
 
-        <div className="flex items-center gap-2">
+        <div className="flex items-center gap-2 flex-shrink-0">
           <LanguageSwitcher />
 
           {/* Mobile Menu Button */}

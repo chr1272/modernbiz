@@ -1,7 +1,7 @@
 {
     "nav": {
         "home": "Home",
-        "services": "Dienstleistungen",
+        "services": "Leistungen",
         "documents": "Dokumente",
         "about": "Über uns",
         "contact": "Kontakt"
@@ -13,7 +13,7 @@
         "cta": "Jetzt starten"
     },
     "services": {
-        "title": "Unsere Dienstleistungen",
+        "title": "Unsere Leistungen",
         "subtitle": "Umfassende Lösungen, die auf Ihre geschäftlichen Anforderungen zugeschnitten sind",
         "items": {
             "consulting": {
