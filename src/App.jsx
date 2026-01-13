@@ -23,9 +23,9 @@ function LanguageSwitcher() {
   const [isOpen, setIsOpen] = useState(false)
 
   const languages = [
+    { code: 'fr', label: 'Français', flag: 'fr' },
     { code: 'en', label: 'English', flag: 'us' },
     { code: 'de', label: 'Deutsch', flag: 'de' },
-    { code: 'fr', label: 'Français', flag: 'fr' },
     { code: 'es', label: 'Español', flag: 'es' },
     { code: 'it', label: 'Italiano', flag: 'it' },
     { code: 'ru', label: 'Русский', flag: 'ru' },
