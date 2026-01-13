@@ -126,12 +126,12 @@ function Header() {
     <motion.header
       initial={{ y: -100, x: '-50%' }}
       animate={{ y: 0, x: '-50%' }}
-      className={`fixed top-4 left-1/2 z-50 px-6 py-3 rounded-full transition-shadow duration-300 w-[calc(100%-2rem)] max-w-max flex items-center gap-4 ${isScrolled
+      className={`fixed top-4 left-1/2 z-50 px-6 py-3 rounded-full transition-shadow duration-300 w-[calc(100%-2rem)] max-w-max flex items-center justify-between gap-4 ${isScrolled
         ? 'bg-white/90 backdrop-blur-md shadow-lg'
         : 'bg-white/80 backdrop-blur-sm shadow-md'
         }`}
     >
-      <nav className="flex items-center gap-4 md:gap-8">
+      <nav className="flex items-center gap-3 md:gap-6">
         <a href="#home" className="text-xl font-bold text-blue-600">
           MODERNBIZ
         </a>
