@@ -142,9 +142,9 @@ function Header() {
             <li key={link.id}>
               <a
                 href={`#${link.id}`}
-                className={`relative px-3 py-1.5 text-sm font-medium transition-colors ${activeSection === link.id
-                  ? 'text-blue-600'
-                  : 'text-gray-600 hover:text-gray-900'
+                className={`relative px-3 py-1.5 text-sm font-medium transition-colors whitespace-nowrap ${activeSection === link.id
+                    ? 'text-blue-600'
+                    : 'text-gray-600 hover:text-gray-900'
                   }`}
               >
                 {link.label}
