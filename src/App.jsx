@@ -23,16 +23,16 @@ function LanguageSwitcher() {
   const [isOpen, setIsOpen] = useState(false)
 
   const languages = [
-    { code: 'en', label: 'English', flag: '🇺🇸' },
-    { code: 'de', label: 'Deutsch', flag: '🇩🇪' },
-    { code: 'fr', label: 'Français', flag: '🇫🇷' },
-    { code: 'es', label: 'Español', flag: '🇪🇸' },
-    { code: 'it', label: 'Italiano', flag: '🇮🇹' },
-    { code: 'ru', label: 'Русский', flag: '🇷🇺' },
-    { code: 'zh', label: '中文', flag: '🇨🇳' },
-    { code: 'ja', label: '日本語', flag: '🇯🇵' },
-    { code: 'ko', label: '한국어', flag: '🇰🇷' },
-    { code: 'ar', label: 'العربية', flag: '🇸🇦' },
+    { code: 'en', label: 'English', flag: 'us' },
+    { code: 'de', label: 'Deutsch', flag: 'de' },
+    { code: 'fr', label: 'Français', flag: 'fr' },
+    { code: 'es', label: 'Español', flag: 'es' },
+    { code: 'it', label: 'Italiano', flag: 'it' },
+    { code: 'ru', label: 'Русский', flag: 'ru' },
+    { code: 'zh', label: '中文', flag: 'cn' },
+    { code: 'ja', label: '日本語', flag: 'jp' },
+    { code: 'ko', label: '한국어', flag: 'kr' },
+    { code: 'ar', label: 'العربية', flag: 'sa' },
   ]
 
   const currentLang = languages.find(l => l.code === i18n.language) || languages[0]
@@ -50,7 +50,11 @@ function LanguageSwitcher() {
         onClick={() => setIsOpen(!isOpen)}
         className="flex items-center gap-2 px-3 py-1.5 rounded-full hover:bg-gray-100 transition-colors text-sm font-medium text-gray-700"
       >
-        <span>{currentLang.flag}</span>
+        <img
+          src={`https://flagcdn.com/w40/${currentLang.flag}.png`}
+          alt=""
+          className="w-5 h-auto rounded-sm border border-gray-100"
+        />
         <span className="hidden sm:inline">{currentLang.label}</span>
         <ChevronDown size={14} className={`transition-transform ${isOpen ? 'rotate-180' : ''}`} />
       </button>
@@ -64,7 +68,11 @@ function LanguageSwitcher() {
               className={`w-full flex items-center gap-3 px-4 py-2.5 text-sm transition-colors hover:bg-gray-50 ${i18n.language === lang.code ? 'text-blue-600 bg-blue-50 font-semibold' : 'text-gray-700'
                 }`}
             >
-              <span className="text-lg">{lang.flag}</span>
+              <img
+                src={`https://flagcdn.com/w40/${lang.flag}.png`}
+                alt=""
+                className="w-5 h-auto rounded-sm border border-gray-100"
+              />
               <span>{lang.label}</span>
             </button>
           ))}
