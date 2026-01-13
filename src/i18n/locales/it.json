@@ -1,0 +1,76 @@
+{
+    "nav": {
+        "home": "Home",
+        "services": "Servizi",
+        "documents": "Documenti",
+        "about": "Chi Siamo",
+        "contact": "Contatti"
+    },
+    "hero": {
+        "title": "Soluzioni innovative per il",
+        "titleAccent": "Business Moderno",
+        "subtitle": "Trasforma la tua azienda con soluzioni tecnologiche all'avanguardia progettate per l'era moderna.",
+        "cta": "Inizia Ora"
+    },
+    "services": {
+        "title": "I Nostri Servizi",
+        "subtitle": "Soluzioni complete progettate per soddisfare le esigenze del tuo business",
+        "items": {
+            "consulting": {
+                "title": "Consulenza",
+                "description": "Guida strategica per aiutare la tua azienda a crescere e prosperare nell'era digitale."
+            },
+            "cloud": {
+                "title": "Servizi Cloud",
+                "description": "Soluzioni cloud scalabili per operazioni fluide e maggiore produttività."
+            },
+            "analytics": {
+                "title": "Analisi Dati",
+                "description": "Approfondimenti basati sui dati per prendere decisioni informate e ottimizzare le prestazioni."
+            },
+            "cyber": {
+                "title": "Cybersecurity",
+                "description": "Proteggi il tuo business con soluzioni di sicurezza di livello enterprise."
+            },
+            "protection": {
+                "title": "Protezione Cloud",
+                "description": "Misure di sicurezza avanzate per la tua infrastruttura cloud."
+            },
+            "cooperation": {
+                "title": "Cooperazione",
+                "description": "Strumenti e strategie collaborative per una gestione efficace del team."
+            }
+        }
+    },
+    "documents": {
+        "title": "Documenti",
+        "subtitle": "Scarica le nostre risorse e la documentazione",
+        "download": "Scarica",
+        "items": {
+            "overview": "Panoramica Aziendale 2024.pdf",
+            "catalog": "Catalogo Servizi.pdf",
+            "case_studies": "Raccolta Casi di Studio.pdf",
+            "tech_specs": "Specifiche Tecniche.pdf"
+        }
+    },
+    "about": {
+        "title": "Chi Siamo",
+        "p1": "In ModernBiz, crediamo nel potere dell'innovazione per trasformare il business. Il nostro team di esperti è dedicato a fornire soluzioni all'avanguardia che guidano la crescita e l'efficienza.",
+        "p2": "Con anni di esperienza in diversi settori, comprendiamo le sfide uniche che le aziende moderne devono affrontare. La nostra missione è essere il tuo partner di fiducia nella navigazione del panorama digitale."
+    },
+    "contact": {
+        "title": "Contatti",
+        "subtitle": "Mettiti in contatto con noi oggi stesso",
+        "name": "Nome",
+        "email": "Email",
+        "message": "Messaggio",
+        "namePlaceholder": "Il tuo nome",
+        "emailPlaceholder": "tua@email.it",
+        "messagePlaceholder": "Come possiamo aiutarti?",
+        "submit": "Invia Messaggio",
+        "success": "Grazie per il tuo messaggio! Ti risponderemo al più presto."
+    },
+    "footer": {
+        "copy": "© 2024 ModernBiz. Tutti i diritti riservati."
+    }
+}

@@ -1,0 +1,76 @@
+{
+    "nav": {
+        "home": "首页",
+        "services": "服务",
+        "documents": "文档",
+        "about": "关于",
+        "contact": "联系"
+    },
+    "hero": {
+        "title": "创新解决方案助力",
+        "titleAccent": "现代商业",
+        "subtitle": "利用专为现代时代设计的尖端技术解决方案转型您的业务。",
+        "cta": "即刻开始"
+    },
+    "services": {
+        "title": "我们的服务",
+        "subtitle": "旨在满足您业务需求的综合解决方案",
+        "items": {
+            "consulting": {
+                "title": "咨询",
+                "description": "战略指导，帮助您的业务在数字时代成长和繁荣。"
+            },
+            "cloud": {
+                "title": "云服务",
+                "description": "可扩展的云解决方案，实现无缝运营并提高效率。"
+            },
+            "analytics": {
+                "title": "数据分析",
+                "description": "基于数据的洞察，助于做出明智决策并优化性能。"
+            },
+            "cyber": {
+                "title": "网络安全",
+                "description": "通过企业级安全解决方案保护您的业务。"
+            },
+            "protection": {
+                "title": "云端保护",
+                "description": "针对云基础设施的高级安全措施。"
+            },
+            "cooperation": {
+                "title": "团队合作",
+                "description": "用于高效团队管理的协作工具和策略。"
+            }
+        }
+    },
+    "documents": {
+        "title": "文档",
+        "subtitle": "下载我们的资源和文档",
+        "download": "下载",
+        "items": {
+            "overview": "2024年公司概况.pdf",
+            "catalog": "服务目录.pdf",
+            "case_studies": "案例研究集.pdf",
+            "tech_specs": "技术规格.pdf"
+        }
+    },
+    "about": {
+        "title": "关于我们",
+        "p1": "在 ModernBiz，我们相信创新的力量可以改变业务。我们的专家团队致力于提供推动增长和效率的尖端解决方案。",
+        "p2": "凭借在不同行业的多年经验，我们了解现代企业面临的独特挑战。我们的使命是成为您在数字领域导航中值得信赖的合作伙伴。"
+    },
+    "contact": {
+        "title": "联系我们",
+        "subtitle": "今天就联系我们",
+        "name": "姓名",
+        "email": "电子邮件",
+        "message": "留言",
+        "namePlaceholder": "您的姓名",
+        "emailPlaceholder": "your@email.com",
+        "messagePlaceholder": "我们能为您提供什么帮助？",
+        "submit": "发送消息",
+        "success": "感谢您的留言！我们会尽快回复您。"
+    },
+    "footer": {
+        "copy": "© 2024 ModernBiz. 保留所有权利。"
+    }
+}

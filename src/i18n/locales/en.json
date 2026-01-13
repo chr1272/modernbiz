@@ -1,0 +1,76 @@
+{
+    "nav": {
+        "home": "Home",
+        "services": "Services",
+        "documents": "Documents",
+        "about": "About",
+        "contact": "Contact"
+    },
+    "hero": {
+        "title": "Innovative Solutions for",
+        "titleAccent": "Modern Business",
+        "subtitle": "Transform your business with cutting-edge technology solutions designed for the modern era.",
+        "cta": "Get Started"
+    },
+    "services": {
+        "title": "Our Services",
+        "subtitle": "Comprehensive solutions designed to meet your business needs",
+        "items": {
+            "consulting": {
+                "title": "Consulting",
+                "description": "Strategic guidance to help your business grow and thrive in the digital age."
+            },
+            "cloud": {
+                "title": "Cloud Services",
+                "description": "Scalable cloud solutions for seamless operations and enhanced productivity."
+            },
+            "analytics": {
+                "title": "Analytics",
+                "description": "Data-driven insights to make informed decisions and optimize performance."
+            },
+            "cyber": {
+                "title": "Cybersecurity",
+                "description": "Protect your business with enterprise-grade security solutions."
+            },
+            "protection": {
+                "title": "Cloud Protection",
+                "description": "Advanced security measures for your cloud infrastructure."
+            },
+            "cooperation": {
+                "title": "Cooperation",
+                "description": "Collaborative tools and strategies for effective team management."
+            }
+        }
+    },
+    "documents": {
+        "title": "Documents",
+        "subtitle": "Download our resources and documentation",
+        "download": "Download",
+        "items": {
+            "overview": "Company Overview 2024.pdf",
+            "catalog": "Service Catalog.pdf",
+            "case_studies": "Case Studies Collection.pdf",
+            "tech_specs": "Technical Specifications.pdf"
+        }
+    },
+    "about": {
+        "title": "About Us",
+        "p1": "At ModernBiz, we believe in the power of innovation to transform businesses. Our team of experts is dedicated to delivering cutting-edge solutions that drive growth and efficiency.",
+        "p2": "With years of experience across diverse industries, we understand the unique challenges modern businesses face. Our mission is to be your trusted partner in navigating the digital landscape."
+    },
+    "contact": {
+        "title": "Contact",
+        "subtitle": "Get in touch with us today",
+        "name": "Name",
+        "email": "Email",
+        "message": "Message",
+        "namePlaceholder": "Your name",
+        "emailPlaceholder": "your@email.com",
+        "messagePlaceholder": "How can we help you?",
+        "submit": "Send Message",
+        "success": "Thank you for your message! We will get back to you soon."
+    },
+    "footer": {
+        "copy": "© 2024 ModernBiz. All rights reserved."
+    }
+}

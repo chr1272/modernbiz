@@ -1,37 +1,98 @@
 import { useState, useEffect } from 'react'
 import { motion } from 'framer-motion'
-import { 
-  Shield, 
-  Cloud, 
-  BarChart3, 
-  Lock, 
-  Users, 
+import {
+  Shield,
+  Cloud,
+  BarChart3,
+  Lock,
+  Users,
   Briefcase,
   FileText,
   Download,
   Menu,
-  X
+  X,
+  Globe,
+  ChevronDown
 } from 'lucide-react'
+import { useTranslation } from 'react-i18next'
+import i18n from './i18n/i18n'
+
+// Language Switcher Component
+function LanguageSwitcher() {
+  const { i18n } = useTranslation()
+  const [isOpen, setIsOpen] = useState(false)
+
+  const languages = [
+    { code: 'en', label: 'English', flag: '🇺🇸' },
+    { code: 'de', label: 'Deutsch', flag: '🇩🇪' },
+    { code: 'fr', label: 'Français', flag: '🇫🇷' },
+    { code: 'es', label: 'Español', flag: '🇪🇸' },
+    { code: 'it', label: 'Italiano', flag: '🇮🇹' },
+    { code: 'ru', label: 'Русский', flag: '🇷🇺' },
+    { code: 'zh', label: '中文', flag: '🇨🇳' },
+    { code: 'ja', label: '日本語', flag: '🇯🇵' },
+    { code: 'ko', label: '한국어', flag: '🇰🇷' },
+    { code: 'ar', label: 'العربية', flag: '🇸🇦' },
+  ]
+
+  const currentLang = languages.find(l => l.code === i18n.language) || languages[0]
+
+  const changeLanguage = (code) => {
+    i18n.changeLanguage(code)
+    setIsOpen(false)
+    document.documentElement.dir = code === 'ar' ? 'rtl' : 'ltr'
+    document.documentElement.lang = code
+  }
+
+  return (
+    <div className="relative">
+      <button
+        onClick={() => setIsOpen(!isOpen)}
+        className="flex items-center gap-2 px-3 py-1.5 rounded-full hover:bg-gray-100 transition-colors text-sm font-medium text-gray-700"
+      >
+        <span>{currentLang.flag}</span>
+        <span className="hidden sm:inline">{currentLang.label}</span>
+        <ChevronDown size={14} className={`transition-transform ${isOpen ? 'rotate-180' : ''}`} />
+      </button>
+
+      {isOpen && (
+        <div className="absolute top-full right-0 mt-2 w-48 bg-white rounded-2xl shadow-xl border border-gray-100 py-2 z-[60] max-h-[400px] overflow-y-auto">
+          {languages.map((lang) => (
+            <button
+              key={lang.code}
+              onClick={() => changeLanguage(lang.code)}
+              className={`w-full flex items-center gap-3 px-4 py-2.5 text-sm transition-colors hover:bg-gray-50 ${i18n.language === lang.code ? 'text-blue-600 bg-blue-50 font-semibold' : 'text-gray-700'
+                }`}
+            >
+              <span className="text-lg">{lang.flag}</span>
+              <span>{lang.label}</span>
+            </button>
+          ))}
+        </div>
+      )}
+    </div>
+  )
+}
 
 // Header Component
 function Header() {
+  const { t } = useTranslation()
   const [activeSection, setActiveSection] = useState('home')
   const [isScrolled, setIsScrolled] = useState(false)
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false)
 
   const navLinks = [
-    { id: 'home', label: 'Home' },
-    { id: 'services', label: 'Services' },
-    { id: 'documents', label: 'Documents' },
-    { id: 'about', label: 'About' },
-    { id: 'contact', label: 'Contact' },
+    { id: 'home', label: t('nav.home') },
+    { id: 'services', label: t('nav.services') },
+    { id: 'documents', label: t('nav.documents') },
+    { id: 'about', label: t('nav.about') },
+    { id: 'contact', label: t('nav.contact') },
   ]
 
   useEffect(() => {
     const handleScroll = () => {
       setIsScrolled(window.scrollY > 20)
-      
-      // Update active section based on scroll position
+
       const sections = navLinks.map(link => document.getElementById(link.id))
       const scrollPosition = window.scrollY + 100
 
@@ -46,36 +107,37 @@ function Header() {
       })
     }
 
+    // Initialize dir on load
+    document.documentElement.dir = i18n.language === 'ar' ? 'rtl' : 'ltr'
+
     window.addEventListener('scroll', handleScroll)
     return () => window.removeEventListener('scroll', handleScroll)
-  }, [])
+  }, [i18n.language])
 
   return (
     <motion.header
       initial={{ y: -100, x: '-50%' }}
       animate={{ y: 0, x: '-50%' }}
-      className={`fixed top-4 left-1/2 z-50 px-6 py-3 rounded-full transition-shadow duration-300 w-[calc(100%-2rem)] max-w-max ${
-        isScrolled 
-          ? 'bg-white/90 backdrop-blur-md shadow-lg' 
-          : 'bg-white/80 backdrop-blur-sm shadow-md'
-      }`}
+      className={`fixed top-4 left-1/2 z-50 px-6 py-3 rounded-full transition-shadow duration-300 w-[calc(100%-2rem)] max-w-max flex items-center gap-4 ${isScrolled
+        ? 'bg-white/90 backdrop-blur-md shadow-lg'
+        : 'bg-white/80 backdrop-blur-sm shadow-md'
+        }`}
     >
-      <nav className="flex items-center gap-8">
+      <nav className="flex items-center gap-4 md:gap-8">
         <a href="#home" className="text-xl font-bold text-blue-600">
           MODERNBIZ
         </a>
-        
+
         {/* Desktop Navigation */}
         <ul className="hidden md:flex items-center gap-6">
           {navLinks.map(link => (
             <li key={link.id}>
               <a
                 href={`#${link.id}`}
-                className={`relative px-3 py-1.5 text-sm font-medium transition-colors ${
-                  activeSection === link.id 
-                    ? 'text-blue-600' 
-                    : 'text-gray-600 hover:text-gray-900'
-                }`}
+                className={`relative px-3 py-1.5 text-sm font-medium transition-colors ${activeSection === link.id
+                  ? 'text-blue-600'
+                  : 'text-gray-600 hover:text-gray-900'
+                  }`}
               >
                 {link.label}
                 {activeSection === link.id && (
@@ -89,13 +151,17 @@ function Header() {
           ))}
         </ul>
 
-        {/* Mobile Menu Button */}
-        <button 
-          className="md:hidden"
-          onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-        >
-          {mobileMenuOpen ? <X size={24} /> : <Menu size={24} />}
-        </button>
+        <div className="flex items-center gap-2">
+          <LanguageSwitcher />
+
+          {/* Mobile Menu Button */}
+          <button
+            className="md:hidden p-2 hover:bg-gray-100 rounded-full transition-colors"
+            onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
+          >
+            {mobileMenuOpen ? <X size={24} /> : <Menu size={24} />}
+          </button>
+        </div>
       </nav>
 
       {/* Mobile Navigation */}
@@ -111,11 +177,10 @@ function Header() {
                 <a
                   href={`#${link.id}`}
                   onClick={() => setMobileMenuOpen(false)}
-                  className={`block px-4 py-2 rounded-lg text-sm font-medium transition-colors ${
-                    activeSection === link.id 
-                      ? 'bg-blue-50 text-blue-600' 
-                      : 'text-gray-600 hover:bg-gray-50'
-                  }`}
+                  className={`block px-4 py-2 rounded-lg text-sm font-medium transition-colors ${activeSection === link.id
+                    ? 'bg-blue-50 text-blue-600'
+                    : 'text-gray-600 hover:bg-gray-50'
+                    }`}
                 >
                   {link.label}
                 </a>
@@ -130,22 +195,23 @@ function Header() {
 
 // Hero Section
 function Hero() {
+  const { t } = useTranslation()
   return (
-    <section id="home" className="min-h-screen flex items-center pt-20 pb-16 px-4 md:px-8 lg:px-16 bg-white">
+    <section id="home" className="min-h-screen flex items-center pt-20 pb-16 px-4 md:px-8 lg:px-16 bg-white overflow-hidden">
       <div className="max-w-7xl mx-auto w-full">
         <div className="grid md:grid-cols-2 gap-12 items-center">
           {/* Left Side - Text */}
           <motion.div
             initial={{ opacity: 0, x: -50 }}
-            animate={{ opacity: 1, x: 0 }}
+            whileInView={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.6 }}
           >
             <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-gray-900 leading-tight mb-6">
-              Innovative Solutions for{' '}
-              <span className="text-blue-600">Modern Business</span>
+              {t('hero.title')}{' '}
+              <span className="text-blue-600">{t('hero.titleAccent')}</span>
             </h1>
             <p className="text-lg text-gray-600 mb-8">
-              Transform your business with cutting-edge technology solutions designed for the modern era.
+              {t('hero.subtitle')}
             </p>
             <motion.a
               href="#contact"
@@ -153,7 +219,7 @@ function Hero() {
               whileTap={{ scale: 0.95 }}
               className="inline-block px-8 py-4 bg-blue-600 text-white font-semibold rounded-2xl shadow-lg hover:bg-blue-700 transition-colors"
             >
-              Get Started
+              {t('hero.cta')}
             </motion.a>
           </motion.div>
 
@@ -168,7 +234,7 @@ function Hero() {
               {/* Background circles */}
               <circle cx="250" cy="250" r="200" fill="#EFF6FF" />
               <circle cx="250" cy="250" r="150" fill="#DBEAFE" />
-              
+
               {/* Geometric shapes */}
               <motion.rect
                 x="180" y="150" width="100" height="100" rx="20"
@@ -196,7 +262,7 @@ function Hero() {
                 animate={{ y: [0, 20, 0] }}
                 transition={{ duration: 2.5, repeat: Infinity, ease: "easeInOut" }}
               />
-              
+
               {/* Accent elements */}
               <rect x="300" y="280" width="60" height="60" rx="12" fill="#2563EB" opacity="0.8" />
               <rect x="340" y="320" width="40" height="40" rx="8" fill="#3B82F6" opacity="0.6" />
@@ -210,36 +276,37 @@ function Hero() {
 
 // Services Section
 function Services() {
+  const { t } = useTranslation()
   const services = [
     {
       icon: Briefcase,
-      title: 'Consulting',
-      description: 'Strategic guidance to help your business grow and thrive in the digital age.'
+      title: t('services.items.consulting.title'),
+      description: t('services.items.consulting.description')
     },
     {
       icon: Cloud,
-      title: 'Cloud Services',
-      description: 'Scalable cloud solutions for seamless operations and enhanced productivity.'
+      title: t('services.items.cloud.title'),
+      description: t('services.items.cloud.description')
     },
     {
       icon: BarChart3,
-      title: 'Analytics',
-      description: 'Data-driven insights to make informed decisions and optimize performance.'
+      title: t('services.items.analytics.title'),
+      description: t('services.items.analytics.description')
     },
     {
       icon: Lock,
-      title: 'Cybersecurity',
-      description: 'Protect your business with enterprise-grade security solutions.'
+      title: t('services.items.cyber.title'),
+      description: t('services.items.cyber.description')
     },
     {
       icon: Shield,
-      title: 'Cloud Protection',
-      description: 'Advanced security measures for your cloud infrastructure.'
+      title: t('services.items.protection.title'),
+      description: t('services.items.protection.description')
     },
     {
       icon: Users,
-      title: 'Cooperation',
-      description: 'Collaborative tools and strategies for effective team management.'
+      title: t('services.items.cooperation.title'),
+      description: t('services.items.cooperation.description')
     },
   ]
 
@@ -252,9 +319,9 @@ function Services() {
           viewport={{ once: true }}
           className="text-center mb-16"
         >
-          <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">Our Services</h2>
+          <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">{t('services.title')}</h2>
           <p className="text-gray-600 max-w-2xl mx-auto">
-            Comprehensive solutions designed to meet your business needs
+            {t('services.subtitle')}
           </p>
         </motion.div>
 
@@ -284,11 +351,12 @@ function Services() {
 
 // Documents Section
 function Documents() {
+  const { t } = useTranslation()
   const documents = [
-    { name: 'Company Overview 2024.pdf', size: '2.4 MB' },
-    { name: 'Service Catalog.pdf', size: '1.8 MB' },
-    { name: 'Case Studies Collection.pdf', size: '5.2 MB' },
-    { name: 'Technical Specifications.pdf', size: '3.1 MB' },
+    { name: t('documents.items.overview'), size: '2.4 MB' },
+    { name: t('documents.items.catalog'), size: '1.8 MB' },
+    { name: t('documents.items.case_studies'), size: '5.2 MB' },
+    { name: t('documents.items.tech_specs'), size: '3.1 MB' },
   ]
 
   return (
@@ -300,8 +368,8 @@ function Documents() {
           viewport={{ once: true }}
           className="text-center mb-12"
         >
-          <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">Documents</h2>
-          <p className="text-gray-600">Download our resources and documentation</p>
+          <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">{t('documents.title')}</h2>
+          <p className="text-gray-600">{t('documents.subtitle')}</p>
         </motion.div>
 
         <div className="space-y-4">
@@ -329,7 +397,7 @@ function Documents() {
                 className="px-5 py-2.5 bg-blue-600 text-white text-sm font-medium rounded-xl hover:bg-blue-700 transition-colors flex items-center gap-2"
               >
                 <Download className="w-4 h-4" />
-                Download
+                {t('documents.download')}
               </motion.button>
             </motion.div>
           ))}
@@ -341,6 +409,7 @@ function Documents() {
 
 // About Section
 function About() {
+  const { t } = useTranslation()
   return (
     <section id="about" className="py-20 px-4 md:px-8 lg:px-16 bg-slate-50">
       <div className="max-w-6xl mx-auto">
@@ -353,16 +422,12 @@ function About() {
           <div className="grid md:grid-cols-2">
             {/* Left Side - Text */}
             <div className="bg-blue-600 p-8 md:p-12 flex flex-col justify-center">
-              <h2 className="text-3xl md:text-4xl font-bold text-white mb-6">About Us</h2>
+              <h2 className="text-3xl md:text-4xl font-bold text-white mb-6 uppercase tracking-wider">{t('about.title')}</h2>
               <p className="text-blue-100 text-lg leading-relaxed mb-4">
-                At ModernBiz, we believe in the power of innovation to transform businesses. 
-                Our team of experts is dedicated to delivering cutting-edge solutions that 
-                drive growth and efficiency.
+                {t('about.p1')}
               </p>
               <p className="text-blue-100 text-lg leading-relaxed">
-                With years of experience across diverse industries, we understand the unique 
-                challenges modern businesses face. Our mission is to be your trusted partner 
-                in navigating the digital landscape.
+                {t('about.p2')}
               </p>
             </div>
 
@@ -383,10 +448,11 @@ function About() {
 
 // Contact Section
 function Contact() {
+  const { t } = useTranslation()
   const handleSubmit = (e) => {
     e.preventDefault()
     // Handle form submission
-    alert('Thank you for your message! We will get back to you soon.')
+    alert(t('contact.success'))
   }
 
   return (
@@ -398,8 +464,8 @@ function Contact() {
           viewport={{ once: true }}
           className="text-center mb-12"
         >
-          <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">Contact</h2>
-          <p className="text-gray-600">Get in touch with us today</p>
+          <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">{t('contact.title')}</h2>
+          <p className="text-gray-600">{t('contact.subtitle')}</p>
         </motion.div>
 
         <motion.form
@@ -413,7 +479,7 @@ function Contact() {
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
             <div>
               <label htmlFor="name" className="block text-sm font-medium text-gray-700 mb-2">
-                Name
+                {t('contact.name')}
               </label>
               <input
                 type="text"
@@ -421,12 +487,12 @@ function Contact() {
                 name="name"
                 required
                 className="w-full px-4 py-3 rounded-xl border border-gray-200 focus:border-blue-500 focus:ring-2 focus:ring-blue-200 transition-all outline-none"
-                placeholder="Your name"
+                placeholder={t('contact.namePlaceholder')}
               />
             </div>
             <div>
               <label htmlFor="email" className="block text-sm font-medium text-gray-700 mb-2">
-                Email
+                {t('contact.email')}
               </label>
               <input
                 type="email"
@@ -434,14 +500,14 @@ function Contact() {
                 name="email"
                 required
                 className="w-full px-4 py-3 rounded-xl border border-gray-200 focus:border-blue-500 focus:ring-2 focus:ring-blue-200 transition-all outline-none"
-                placeholder="your@email.com"
+                placeholder={t('contact.emailPlaceholder')}
               />
             </div>
           </div>
 
           <div>
             <label htmlFor="message" className="block text-sm font-medium text-gray-700 mb-2">
-              Message
+              {t('contact.message')}
             </label>
             <textarea
               id="message"
@@ -449,7 +515,7 @@ function Contact() {
               rows={5}
               required
               className="w-full px-4 py-3 rounded-xl border border-gray-200 focus:border-blue-500 focus:ring-2 focus:ring-blue-200 transition-all outline-none resize-none"
-              placeholder="How can we help you?"
+              placeholder={t('contact.messagePlaceholder')}
             />
           </div>
 
@@ -459,7 +525,7 @@ function Contact() {
             whileTap={{ scale: 0.98 }}
             className="w-full py-4 bg-blue-600 text-white font-semibold rounded-2xl hover:bg-blue-700 transition-colors shadow-lg"
           >
-            Send Message
+            {t('contact.submit')}
           </motion.button>
         </motion.form>
       </div>
@@ -469,10 +535,11 @@ function Contact() {
 
 // Footer
 function Footer() {
+  const { t } = useTranslation()
   return (
     <footer className="py-8 px-4 bg-gray-900 text-center">
       <p className="text-gray-400">
-        © 2024 ModernBiz. All rights reserved.
+        {t('footer.copy')}
       </p>
     </footer>
   )

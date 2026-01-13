@@ -1,0 +1,76 @@
+{
+    "nav": {
+        "home": "Home",
+        "services": "Dienstleistungen",
+        "documents": "Dokumente",
+        "about": "Über uns",
+        "contact": "Kontakt"
+    },
+    "hero": {
+        "title": "Innovative Lösungen für",
+        "titleAccent": "Moderne Unternehmen",
+        "subtitle": "Transformieren Sie Ihr Unternehmen mit technologischen Spitzenlösungen, die für die moderne Ära entwickelt wurden.",
+        "cta": "Jetzt starten"
+    },
+    "services": {
+        "title": "Unsere Dienstleistungen",
+        "subtitle": "Umfassende Lösungen, die auf Ihre geschäftlichen Anforderungen zugeschnitten sind",
+        "items": {
+            "consulting": {
+                "title": "Beratung",
+                "description": "Strategische Begleitung, die Ihrem Unternehmen hilft, im digitalen Zeitalter zu wachsen und erfolgreich zu sein."
+            },
+            "cloud": {
+                "title": "Cloud-Dienste",
+                "description": "Skalierbare Cloud-Lösungen für nahtlose Abläufe und gesteigerte Produktivität."
+            },
+            "analytics": {
+                "title": "Analytik",
+                "description": "Datenbasierte Erkenntnisse, um fundierte Entscheidungen zu treffen und die Leistung zu optimieren."
+            },
+            "cyber": {
+                "title": "Cybersicherheit",
+                "description": "Schützen Sie Ihr Unternehmen mit Sicherheitslösungen auf Enterprise-Niveau."
+            },
+            "protection": {
+                "title": "Cloud-Schutz",
+                "description": "Fortschrittliche Sicherheitsmaßnahmen für Ihre Cloud-Infrastruktur."
+            },
+            "cooperation": {
+                "title": "Zusammenarbeit",
+                "description": "Kollaborative Tools und Strategien für ein effektives Teammanagement."
+            }
+        }
+    },
+    "documents": {
+        "title": "Dokumente",
+        "subtitle": "Laden Sie unsere Ressourcen und Dokumentationen herunter",
+        "download": "Herunterladen",
+        "items": {
+            "overview": "Unternehmensübersicht 2024.pdf",
+            "catalog": "Servicekatalog.pdf",
+            "case_studies": "Fallstudien-Sammlung.pdf",
+            "tech_specs": "Technische Spezifikationen.pdf"
+        }
+    },
+    "about": {
+        "title": "Über uns",
+        "p1": "Bei ModernBiz glauben wir an die Kraft der Innovation, um Unternehmen zu transformieren. Unser Expertenteam widmet sich der Bereitstellung modernster Lösungen, die Wachstum und Effizienz fördern.",
+        "p2": "Mit jahrelanger Erfahrung in verschiedenen Branchen verstehen wir die einzigartigen Herausforderungen, denen moderne Unternehmen gegenüberstehen. Unsere Mission ist es, Ihr vertrauenswürdiger Partner bei der Navigation durch die digitale Landschaft zu sein."
+    },
+    "contact": {
+        "title": "Kontakt",
+        "subtitle": "Nehmen Sie noch heute Kontakt mit uns auf",
+        "name": "Name",
+        "email": "E-Mail",
+        "message": "Nachricht",
+        "namePlaceholder": "Ihr Name",
+        "emailPlaceholder": "ihre@email.de",
+        "messagePlaceholder": "Wie können wir Ihnen helfen?",
+        "submit": "Nachricht senden",
+        "success": "Vielen Dank für Ihre Nachricht! Wir werden uns in Kürze bei Ihnen melden."
+    },
+    "footer": {
+        "copy": "© 2024 ModernBiz. Alle Rechte vorbehalten."
+    }
+}
